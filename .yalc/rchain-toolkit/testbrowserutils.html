@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script src="./browser/rchain-token@14.0.0.js"></script>
+    <script src="./browser/buffer@6.0.3.js"></script>
+    <script src="./browser/rchain-toolkit-browser-utils@0.3.6.js"></script>
+    <script type="text/javascript">
+      console.log("RChainToolkitBrowserUtils", !!RChainToolkitBrowserUtils);
+      console.log(RChainToolkitBrowserUtils);
+      console.log("RChainToken", !!RChainToken);
+      const pursesAsBytes = JSON.parse(
+        `{"ExprMap":{"data":{"507dc9d733d598f9df30f12c050f6dd70821997c1ae119d8d637c3b6f6c6":{"ExprBytes":{"data":"2a6bba01680a160a092a071a05626f78496412092a071a056d79626f780a0f0a062a041a02696412052a031a01350a0b0a092a071a0570726963650a140a0c2a0a1a087175616e7469747912042a0210040a1a0a0d2a0b1a0974696d657374616d7012092a0710f4bbb7949c5f"}},"747c6a045c87759c62c7615f55272bf6cb690f285418d6d768b745f6c9b7":{"ExprBytes":{"data":"2a75ba01720a160a092a071a05626f78496412092a071a056d79626f780a0f0a062a041a02696412052a031a01310a140a092a071a05707269636512072a05108084af5f0a150a0c2a0a1a087175616e7469747912052a0310b80f0a1a0a0d2a0b1a0974696d657374616d7012092a0710f4bbb7949c5f"}},"ed5e52fe5336ff262f838a51e98b3725ec2dfb768db37a4da8ede2918fff":{"ExprBytes":{"data":"2a6bba01680a160a092a071a05626f78496412092a071a056d79626f780a0f0a062a041a02696412052a031a01320a0b0a092a071a0570726963650a140a0c2a0a1a087175616e7469747912042a0210020a1a0a0d2a0b1a0974696d657374616d7012092a0710f4bbb7949c5f"}},"dc06bcf2b2d7cfe2f387deb5acb97d46b4532992a8aad5100fb8e8d2527e":{"ExprBytes":{"data":"2a6bba01680a160a092a071a05626f78496412092a071a056d79626f780a0f0a062a041a02696412052a031a01340a0b0a092a071a0570726963650a140a0c2a0a1a087175616e7469747912042a0210100a1a0a0d2a0b1a0974696d657374616d7012092a0710f4bbb7949c5f"}},"29a904ba9a7cc8f6bbae74341f4f29ff3786786c4f4a628fada964f32dbe":{"ExprBytes":{"data":"2a6bba01680a160a092a071a05626f78496412092a071a056d79626f780a0f0a062a041a02696412052a031a01330a0b0a092a071a0570726963650a140a0c2a0a1a087175616e7469747912042a0210040a1a0a0d2a0b1a0974696d657374616d7012092a0710f4bbb7949c5f"}}}}}`
+      );
+      const purses = RChainToken.decodePurses(
+        pursesAsBytes,
+        RChainToolkitBrowserUtils.rhoExprToVar,
+        RChainToolkitBrowserUtils.decodePar
+      );
+      console.log(purses);
+      console.log("Apparently purses with correctly decoded");
+    </script>
+  </head>
+  <body></body>
+</html>

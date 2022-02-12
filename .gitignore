@@ -1,0 +1,7 @@
+node_modules
+package-lock.json
+yarn.lock
+src/rnode.data.DIR_IS_UNDEFINED
+src/log
+src/cli-scripts/snapshot
+yarn-error.log

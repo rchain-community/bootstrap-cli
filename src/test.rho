@@ -1,0 +1,8 @@
+new chan1, @chan2, chan3, chan4 in {
+    chan1!(*chan2, *chan3) | 
+    @(*chan4)!(*chan2, *chan3)
+    | 
+    contract test(test1, @test2, test3, test4) --> takes only identifier for names and @ turns names to processes
+|
+    contract test2(@(test1, test2, test3, test4)) 
+}

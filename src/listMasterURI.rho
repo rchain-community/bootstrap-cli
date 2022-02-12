@@ -1,0 +1,21 @@
+new
+   invoker
+   ,stdout(`rho:io:stdout`)
+   ,deployerId(`rho:rchain:deployerId`)
+   ,mapCh
+in {
+   for(@{"read": *read, ..._} <<- @[*deployerId, "MasterDictionary"])
+   {  stdout!(["read", *read])
+   | invoker!(["read", *read])
+   |  deployerId!(["read", *read])
+   |  read!(*mapCh)
+   |  for (map <- mapCh)
+      {  stdout!(*map.keys().toList())
+      | invoker!(*map.keys().toList())
+      |  deployerId!(["read", *read])
+      |  stdout!(*map)
+      | invoker!(*map)
+      |  deployerId!(*map)
+      }
+   }
+}

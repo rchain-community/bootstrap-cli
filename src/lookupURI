@@ -1,0 +1,14 @@
+#!/bin/bash
+
+! cd "$(dirname "$0")" && echo "Could not cd to script directory" && exit 1
+
+mkdir -p log
+
+TMPFILE=$(mktemp)
+
+sed "s/\"?\"/\"$1\"/" < ../src/actions/lookupURI.rho > "$TMPFILE"
+
+# shellcheck disable=SC2016
+./deploy "$TMPFILE" | grep "DeployId is:" && ./propose | tail -n 0 -f log/run-rnode.log | sed '/URI/q' | grep URI
+
+rm "$TMPFILE"
