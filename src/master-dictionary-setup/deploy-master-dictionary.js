@@ -13,21 +13,14 @@ const network = 'localhost';
 const privatekey_f = path.join(__dirname, '../PrivateKeys/pk.bootstrap');
 
 const createDirectoryContract = async () => {
-  const directoryURI = easyDeploy(console, ALLNETWORKS, '../rholang/core/Directory.rho', privatekey_f, network);
-  directoryURI.then(uri => createMasterDictionary(uri[2]));
-  const response1 = await propose();
-  console.log("response 1: " + response1);
-  return directoryURI[2];
-}
+  // get directory URI
+  const directoryURI = await easyDeploy(console, ALLNETWORKS, '../rholang/core/Directory.rho', privatekey_f, network);
+  console.log(directoryURI);
 
-const createMasterDictionary = async (URI) => {
     // deploy master dictionary
-    console.log("using uri " + URI + "for master dictionary")
-    masterReadURI = deployMasterDictionary(URI);
-    const response2 = propose();
-    console.log(masterReadURI)
-    console.log("response 2:" + response2)
-
+  masterURI = await deployMasterDictionary(directoryURI[2]);
+  console.log(masterURI)
+  
     // create uri-src directory if it does not exist
    const dir = path.join(__dirname, '../uri-src')
    if (!fs.existsSync(dir)) {
@@ -35,7 +28,7 @@ const createMasterDictionary = async (URI) => {
     }
 
     // write the master read uri to the MasterURI localhost file
-    masterReadURI.then(uri => fs.writeFileSync(path.join(__dirname, "../uri-src/MasterURI.localhost.json"), JSON.stringify({ "localhostNETWORK": uri})))
+     fs.writeFileSync(path.join(__dirname, "../uri-src/MasterURI.localhost.json"), JSON.stringify({ "localhostNETWORK": masterURI}))
 }
 
-createDirectoryContract().then(uri => console.log(uri));
+createDirectoryContract()

@@ -16,7 +16,7 @@ const deployRgovContract = async () => {
     let directoryURI;
     let result;
 
-    const directory = join(__dirname, '../../rholang');
+    const directory = join(__dirname, '../rholang');
 
     // get rholang files from rchain directory function
     async function* getFiles(dir) {

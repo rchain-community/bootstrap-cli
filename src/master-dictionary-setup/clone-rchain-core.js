@@ -9,6 +9,7 @@ const execshell = require('../cli-utils/exec-script');
 // clone rchain files from github
 const cloneRchainCore = async () => {
 const directory = path.join(__dirname, '../rchain');
+console.log(directory);
 
 try {
     if (!fs.existsSync(directory)) {
