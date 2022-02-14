@@ -4,7 +4,7 @@ const execShell = require('./exec-script');
 const { checkRnode } = require('./check-rnode-script');
 
 module.exports = {
-  stopRnode: async (force) => {
+  stopRnode: async () => {
     //get current pid for rnode
     const pid = await checkRnode();
 

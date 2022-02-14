@@ -1,0 +1,1 @@
+export function checkPort(host: string, port: any[]): Promise<any>

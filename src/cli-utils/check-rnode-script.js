@@ -6,7 +6,7 @@ const { SingleEntryPlugin } = require('webpack');
 
 module.exports = {
   // TODO: re-implement this to respect the ALLNETWORKS and network arguments
-  checkRnode: async (ALLNETWORKS, network) => {
+  checkRnode: async () => {
     //get current pid for rnode
     const shell_output = await execShell(
       `ps aux |grep -v grep | grep "java .*rnode"|sed 's/[ \t][ \t]*/ /g'|cut -d' ' -f 2`,
